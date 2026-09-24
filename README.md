@@ -41,12 +41,12 @@ La función recorre `n` términos. El primero es 1 y cada uno se obtiene del
 anterior aplicando `g`. Cada término se eleva a la potencia `p`, y los
 resultados se combinan con `f`.
 
-| Parámetro | Qué es |
-|---|---|
-| `n` | cuántos términos se recorren |
-| `p` | a qué potencia se eleva cada término |
-| `f` | cómo se combinan dos resultados |
-| `g` | cómo se pasa de un término al siguiente |
+| Parámetro | Qué es                                  |
+| --------- | --------------------------------------- |
+| `n`       | cuántos términos se recorren            |
+| `p`       | a qué potencia se eleva cada término    |
+| `f`       | cómo se combinan dos resultados         |
+| `g`       | cómo se pasa de un término al siguiente |
 
 #### Ejemplos
 
@@ -100,13 +100,13 @@ Es `suma(f, prox, a, b)` con los parámetros repartidos en tres grupos:
 suma `f(a) + f(prox(a)) + …` mientras `a <= b`, y devuelve 0 con un rango
 vacío. La llamada recursiva también lleva los tres grupos.
 
-| Llamada | Resultado |
-|---|---|
-| `suma4(x => x)(x => x + 1)(1, 10)` | 55 |
-| `suma4(x => x * x)(x => x + 1)(1, 10)` | 385 |
-| `suma4(x => x)(x => x + 2)(1, 10)` | 25 |
-| `suma4(x => x)(x => x * 2)(1, 16)` | 31 |
-| `suma4(x => x)(x => x + 1)(10, 1)` | 0 |
+| Llamada                                | Resultado |
+| -------------------------------------- | --------- |
+| `suma4(x => x)(x => x + 1)(1, 10)`     | 55        |
+| `suma4(x => x * x)(x => x + 1)(1, 10)` | 385       |
+| `suma4(x => x)(x => x + 2)(1, 10)`     | 25        |
+| `suma4(x => x)(x => x * 2)(1, 16)`     | 31        |
+| `suma4(x => x)(x => x + 1)(10, 1)`     | 0         |
 
 Con los dos primeros grupos llenos queda una función que solo espera el
 rango. `sumaCuadradosSuc` es eso:
@@ -131,13 +131,13 @@ Combina los términos `f(a), f(prox(a)), …` con `op`, y con el rango vacío
 devuelve `inicio`. Los dos primeros grupos van juntos porque `inicio` es el
 neutro de `op`: 0 para la suma, 1 para el producto.
 
-| Llamada | Resultado |
-|---|---|
-| `reducirC((x, y) => x + y)(0)(x => x, x => x + 1)(1, 4)` | 10 |
-| `reducirC((x, y) => x * y)(1)(x => x, x => x + 1)(1, 4)` | 24 |
-| `reducirC((x, y) => x + y)(0)(x => x * x, x => x + 2)(1, 7)` | 84 |
-| `reducirC((x, y) => math.max(x, y))(Int.MinValue)(x => 10 - x, x => x + 4)(1, 13)` | 9 |
-| `reducirC((x, y) => x * y)(1)(x => x, x => x + 1)(5, 4)` | 1 |
+| Llamada                                                                            | Resultado |
+| ---------------------------------------------------------------------------------- | --------- |
+| `reducirC((x, y) => x + y)(0)(x => x, x => x + 1)(1, 4)`                           | 10        |
+| `reducirC((x, y) => x * y)(1)(x => x, x => x + 1)(1, 4)`                           | 24        |
+| `reducirC((x, y) => x + y)(0)(x => x * x, x => x + 2)(1, 7)`                       | 84        |
+| `reducirC((x, y) => math.max(x, y))(Int.MinValue)(x => 10 - x, x => x + 4)(1, 13)` | 9         |
+| `reducirC((x, y) => x * y)(1)(x => x, x => x + 1)(5, 4)`                           | 1         |
 
 El cuarto caso muestra que `op` no tiene que ser aritmética: el máximo con
 `Int.MinValue` como inicio también es una reducción.
@@ -166,16 +166,16 @@ def sumador(n: Int): Int => Int
 identidad, y se escribe con `componer` y recursión sobre `n`. `sumador(n)`
 es la función que suma `n`.
 
-| Llamada | Resultado |
-|---|---|
-| `componer(x => x + 1)(x => x * 2)(5)` | 11 |
-| `componer(x => x * 2)(x => x + 1)(5)` | 12 |
-| `aplicarN(x => x * 2)(3)(1)` | 8 |
-| `aplicarN(x => x + 3)(0)(7)` | 7 |
-| `aplicarN(x => x * x)(2)(3)` | 81 |
-| `sumador(5)(3)` | 8 |
-| `aplicarN(sumador(3))(4)(0)` | 12 |
-| `componer(sumador(5))(sumador(-5))(42)` | 42 |
+| Llamada                                 | Resultado |
+| --------------------------------------- | --------- |
+| `componer(x => x + 1)(x => x * 2)(5)`   | 11        |
+| `componer(x => x * 2)(x => x + 1)(5)`   | 12        |
+| `aplicarN(x => x * 2)(3)(1)`            | 8         |
+| `aplicarN(x => x + 3)(0)(7)`            | 7         |
+| `aplicarN(x => x * x)(2)(3)`            | 81        |
+| `sumador(5)(3)`                         | 8         |
+| `aplicarN(sumador(3))(4)(0)`            | 12        |
+| `componer(sumador(5))(sumador(-5))(42)` | 42        |
 
 Los dos primeros dan distinto: el orden de composición importa. Los dos
 últimos combinan los tres puntos: `sumador(3)` fabrica una función, y esa
