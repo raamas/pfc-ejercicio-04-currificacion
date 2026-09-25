@@ -1,3 +1,15 @@
+error id: file:///A:/dev/Concurrente/pfc-ejercicio-04-currificacion/app/src/main/scala/taller/Ejercicio.scala:scala/Int#
+file:///A:/dev/Concurrente/pfc-ejercicio-04-currificacion/app/src/main/scala/taller/Ejercicio.scala
+empty definition using pc, found symbol in pc: scala/Int#
+empty definition using semanticdb
+empty definition using fallback
+non-local guesses:
+	 -Int#
+	 -scala/Predef.Int#
+offset: 619
+uri: file:///A:/dev/Concurrente/pfc-ejercicio-04-currificacion/app/src/main/scala/taller/Ejercicio.scala
+text:
+```scala
 package taller
 
 class Ejercicio() {
@@ -6,12 +18,7 @@ class Ejercicio() {
   // anterior aplicando g. Cada término se eleva a la p y se combina con f.
   // Tal como está devuelve siempre 0 y las pruebas quedan en rojo.
   def opCurrified(n: Int)(p: Int)(f: (Int, Int) => Int)(g: Int => Int): Int = {
-    def aux(c:Int,acc:Int):Int={
-      if (c == 0) acc
-      val x: Int = math.pow(g(c),p).toInt
-      aux(c-1,f(acc,x))
-    }
-    aux(n,0)
+    
   }
 
   // Punto 2. La suma de la sesión con tres grupos de parámetros.
@@ -20,7 +27,7 @@ class Ejercicio() {
   }
 
   // suma4 con f y prox ya fijados: cuadrados de uno en uno.
-  def sumaCuadradosSuc: (Int, Int) => Int = { (a, b) =>
+  def sumaCuadradosSuc: (Int, Int) => In@@t = { (a, b) =>
     0 // Completar con una aplicación parcial de suma4
   }
 
@@ -53,3 +60,10 @@ class Ejercicio() {
     0 // Completar
   }
 }
+
+```
+
+
+#### Short summary: 
+
+empty definition using pc, found symbol in pc: scala/Int#
